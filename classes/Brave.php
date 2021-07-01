@@ -19,14 +19,20 @@ class Brave extends Human
   // オーバーライド
   public function doAttack($enemies)
   {
-    // HPが0かどうかのチェックをする
-    if ($this->hitPoint <= 0) {
+    // チェックが通らないと処理が終了
+    if (!$this->isEnableAttack($enemies)) {
       return false;
     }
 
-    $enemiesIndex = rand(0, count($enemies) - 1);
-    $enemy = $enemies[$enemiesIndex];
+    $enemy = $this->selectTarget($enemies);
 
+    // if ($this->hitPoint <= 0) {
+    //   return false;
+    // }
+
+    // $enemiesIndex = rand(0, count($enemies) - 1);
+    // $enemy = $enemies[$enemiesIndex];
+    
     // 1/3の確率でスキルを発生させる
     if (rand(1, 3) === 1) {
       echo "「{$this->getName()}」のスキルが発動した！" . PHP_EOL;

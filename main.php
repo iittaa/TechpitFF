@@ -2,8 +2,9 @@
 // echo "処理のはじまりはじまり〜\n\n";
 
 // ファイル読み込み
-require_once("classes/Enemy.php");
+require_once("classes/Lives.php");
 require_once("classes/Human.php");
+require_once("classes/Enemy.php");
 require_once("classes/Brave.php");
 require_once("classes/BlackMage.php");
 require_once("classes/WhiteMage.php");
