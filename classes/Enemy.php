@@ -9,9 +9,10 @@ class Enemy
   private $attackPoint = 10; //敵の攻撃力
 
   // メソッド
-  public function __construct($name)
+  public function __construct($name, $attackPoint)
   {
     $this->name = $name;
+    $this->attackPoint = $attackPoint;
   }
 
   public function doAttack($human)

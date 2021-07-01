@@ -1,5 +1,6 @@
 <?php
 
+// 人間クラス
 class Human
 {
   // プロパティ
@@ -29,6 +30,15 @@ class Human
     // HPが0未満にならないための処理
     if ($this->hitPoint < 0) {
       $this->hitPoint = 0;
+    }
+  }
+
+  public function recoveryDamage($heal, $target)
+  {
+    $this->hitPoint += $heal;
+    // HPが最大HPを超えないようにするための処理
+    if ($this->hitPoint > $target::MAX_HITPOINT) {
+      $this->hitPoint = $target::MAX_HITPOINT;
     }
   }
 

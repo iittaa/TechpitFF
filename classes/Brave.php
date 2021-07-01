@@ -1,5 +1,6 @@
 <?php
 
+// 勇者クラス
 class Brave extends Human
 {
   // プロパティ
@@ -27,6 +28,7 @@ class Brave extends Human
       // 親のメソッドを使用する。
       Parent::doAttack($enemy);
     }
+    // return true;
   }
 
 }
