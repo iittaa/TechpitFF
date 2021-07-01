@@ -18,17 +18,25 @@ class BlackMage extends Human
     Parent::__construct($name, $this->hitPoint, $this->attackPoint);
   }
 
-  public function doAttack($enemy)
+  public function doAttack($enemies)
   {
+    // HPが0かどうかのチェックをする
+    if ($this->hitPoint <= 0) {
+      return false;
+    }
+
+    $enemiesIndex = rand(0, count($enemies) - 1);
+    $enemy = $enemies[$enemiesIndex];
+
     if (rand(1, 2) === 1) {
       echo "「{$this->getName()}」がスキルを発動した！" . PHP_EOL;
       echo "「ファイア！！！」" . PHP_EOL;
       echo "{$enemy->getName()}に". $this->intelligence * 1.5 . "のダメージ" . PHP_EOL;
       $enemy->tookDamage($this->intelligence * 1.5);
     } else {
-      Parent::doAttack($enemy);
+      Parent::doAttack($enemies);
     }
-    // return true;
+    return true;
   }
 
 

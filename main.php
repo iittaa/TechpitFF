@@ -41,7 +41,7 @@ while (!$isFinishFlg) {
     echo "{$enemy->getName()} ： {$enemy->getHitPoint()}/" . $enemy::MAX_HITPOINT . PHP_EOL;
   }
 
-  echo PHP_EOL;
+  echo PHP_EOL . PHP_EOL;
   
   // echo "{$tiida->getName()} ： {$tiida->getHitPoint()}/" . $tiida::MAX_HITPOINT . "\n";
   // echo "{$goblin->getName()} ： {$goblin->getHitPoint()}/" . $goblin::MAX_HITPOINT . "\n";
@@ -49,21 +49,26 @@ while (!$isFinishFlg) {
 
   // 攻撃する
   foreach ($members as $member) {
-    $enemiesIndex = rand(0, count($enemies) - 1);
-    $enemy = $enemies[$enemiesIndex];
+    // $enemiesIndex = rand(0, count($enemies) - 1);
+    // $enemy = $enemies[$enemiesIndex];
+
     // 白魔道士の場合他オブジェクトも渡す
     if (get_class($member) == "WhiteMage") {
-      $member->doAttackWhiteMage($enemy, $member) . PHP_EOL;
+      $member->doAttackWhiteMage($enemies, $members) . PHP_EOL;
+      // $member->doAttackWhiteMage($enemy, $member) . PHP_EOL;
     } else {
-      $member->doAttack($enemy) . PHP_EOL;
+      $member->doAttack($enemies) . PHP_EOL;
+      // $member->doAttack($enemy) . PHP_EOL;
     }
     echo PHP_EOL;
   }
 
+  echo PHP_EOL;
+
   foreach ($enemies as $enemy) {
-    $membersIndex = rand(0, count($members) - 1);
-    $member = $members[$membersIndex];
-    echo $enemy->doAttack($member) . PHP_EOL;
+    // $membersIndex = rand(0, count($members) - 1);
+    // $member = $members[$membersIndex];
+    echo $enemy->doAttack($members) . PHP_EOL;
   }
 
   // 味方の全滅をチェックする
