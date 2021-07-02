@@ -2,24 +2,40 @@
 // echo "処理のはじまりはじまり〜\n\n";
 
 // ファイル読み込み
-require_once("classes/Lives.php");
-require_once("classes/Human.php");
-require_once("classes/Enemy.php");
-require_once("classes/Brave.php");
-require_once("classes/BlackMage.php");
-require_once("classes/WhiteMage.php");
-require_once("classes/Message.php");
+// require_once("classes/Lives.php");
+// require_once("classes/Human.php");
+// require_once("classes/Enemy.php");
+// require_once("classes/Brave.php");
+// require_once("classes/BlackMage.php");
+// require_once("classes/WhiteMage.php");
+// require_once("classes/Message.php");
+
+require_once("lib/Loader.php");
+require_once("lib/Utility.php");
+
+// オートロード
+$loader = new Loader();
+// classフォルダの中身をロード対象ディレクトリとして登録
+$loader->regDirectory(__DIR__ ."/classes");
+$loader->regDirectory(__DIR__ ."/classes/constants");
+$loader->register();
 
 // インスタンス化
 $members = array();
-$members[] = new Brave("ティーダ");
-$members[] = new BlackMage("ユウナ");
-$members[] = new WhiteMage("ルールー");
+// $members[] = new Brave("ティーダ");
+// $members[] = new BlackMage("ユウナ");
+// $members[] = new WhiteMage("ルールー");
+$members[] = new Brave(CharacterName::TIIDA);
+$members[] = new BlackMage(CharacterName::YUNA);
+$members[] = new WhiteMage(CharacterName::RULU);
 
 $enemies = array();
-$enemies[] = new Enemy("ゴブリン", 20);
-$enemies[] = new Enemy("ボム", 25);
-$enemies[] = new Enemy("モルボル", 30);
+// $enemies[] = new Enemy("ゴブリン", 20);
+// $enemies[] = new Enemy("ボム", 25);
+// $enemies[] = new Enemy("モルボル", 30);
+$enemies[] = new Enemy(EnemyName::GOBLINS, 20);
+$enemies[] = new Enemy(EnemyName::BOMB, 25);
+$enemies[] = new Enemy(EnemyName::MORBOL, 30);
 
 $turn = 1;
 $isFinishFlg = false;
@@ -28,20 +44,20 @@ $isFinishFlg = false;
 // echo rand(1,3) . PHP_EOL;
 
 // 全滅チェックメソッド
-function isFinish($objects)
-{
-  $deathCnt = 0;
-  foreach ($objects as $object) {
-    if ($object->getHitPoint() > 0) {
-      return false;
-    }
-    $deathCnt++;
-  }
+// function isFinish($objects)
+// {
+//   $deathCnt = 0;
+//   foreach ($objects as $object) {
+//     if ($object->getHitPoint() > 0) {
+//       return false;
+//     }
+//     $deathCnt++;
+//   }
 
-  if ($deathCnt === count($objects)) {
-    return true;
-  }
-}
+//   if ($deathCnt === count($objects)) {
+//     return true;
+//   }
+// }
 
 
 

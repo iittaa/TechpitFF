@@ -8,13 +8,24 @@ class Brave extends Human
   private $hitPoint = self::MAX_HITPOINT;
   private $attackPoint = 30;
 
+  // private $instance;
+
 
   // メソッド
-  public function __construct($name)
+   public function __construct($name)
   {
     // 親メソッドのコンストラクタを呼ぶ。
     Parent::__construct($name, $this->hitPoint, $this->attackPoint);
   }
+
+  // シングルトンで常にインスタンスは一つしか生成しない
+  // public static function getInstance($name)
+  // {
+  //   if (empty(self::$instance)) {
+  //     self::$instance = new Brave($name);
+  //   }
+  //   return self::$instance;
+  // }
 
   // オーバーライド
   public function doAttack($enemies)
